@@ -8,7 +8,6 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
@@ -35,14 +34,11 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
 
-            // disable login button unless both username / password is valid
-            binding.login?.isEnabled = loginState.isDataValid
-
             if (loginState.usernameError != null) {
-                binding.editTextEmail?.error = getString(loginState.usernameError)
+                binding.editTextEmail.error = getString(loginState.usernameError)
             }
             if (loginState.passwordError != null) {
-                binding.editTextPassword?.error = getString(loginState.passwordError)
+                binding.editTextPassword.error = getString(loginState.passwordError)
             }
         })
 
@@ -62,18 +58,18 @@ class LoginActivity : AppCompatActivity() {
             finish()
         })
 
-        binding.editTextEmail?.afterTextChanged {
+        binding.editTextEmail.afterTextChanged {
             loginViewModel.loginDataChanged(
-                binding.editTextEmail?.text.toString(),
-                binding.editTextPassword?.text.toString()
+                binding.editTextEmail.text.toString(),
+                binding.editTextPassword.text.toString()
             )
         }
 
-        binding.editTextPassword?.apply {
+        binding.editTextPassword.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
-                    binding.editTextEmail?.text.toString(),
-                    binding.editTextPassword?.text.toString()
+                    binding.editTextEmail.text.toString(),
+                    binding.editTextPassword.text.toString()
                 )
             }
 
@@ -81,8 +77,8 @@ class LoginActivity : AppCompatActivity() {
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE -> {
                         loginViewModel.login(
-                            binding.editTextEmail?.text.toString(),
-                            binding.editTextPassword?.text.toString()
+                            binding.editTextEmail.text.toString(),
+                            binding.editTextPassword.text.toString()
                         )
                         setLoadingVisibilty(true)
                     }
@@ -90,10 +86,10 @@ class LoginActivity : AppCompatActivity() {
                 false
             }
 
-            binding.buttonLogin?.setOnClickListener {
+            binding.buttonLogin.setOnClickListener {
                 setLoadingVisibilty(true)
-                loginViewModel.login(binding.editTextEmail?.text.toString(),
-                    binding.editTextPassword?.text.toString())
+                loginViewModel.login(binding.editTextEmail.text.toString(),
+                    binding.editTextPassword.text.toString())
             }
         }
     }
@@ -115,7 +111,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setLoadingVisibilty(isVisible: Boolean) {
         binding.loading.isVisible = isVisible
-        if (isVisible) binding.lottieLoading?.playAnimation() else binding.lottieLoading?.pauseAnimation()
+        if (isVisible) binding.lottieLoading.playAnimation() else binding.lottieLoading?.pauseAnimation()
     }
 
 }
