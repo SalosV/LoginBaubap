@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LoginBaubap</string>
+    <string name="app_name">Craft beer</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -8,4 +8,7 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="dont_have_account">Don\'t have account?</string>
+    <string name="action_sign_up">Sign up</string>
 </resources>
