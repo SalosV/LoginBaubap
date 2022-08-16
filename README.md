@@ -12,7 +12,7 @@ I approached this application with the following knowledge in mind:
 - MVVM
 - Dependency injection with Dagger hilt
 - Material design
-
+- Style code
 
 
 
@@ -36,6 +36,7 @@ I approached this application with the following knowledge in mind:
 - Robolectric
 - Mockito
 - JUnit4
+- Detekt
 
 ## Documentation
 
