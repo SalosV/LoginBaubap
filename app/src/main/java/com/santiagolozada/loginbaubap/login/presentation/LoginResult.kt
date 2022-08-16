@@ -1,4 +1,4 @@
-package com.santiagolozada.loginbaubap.login.ui
+package com.santiagolozada.loginbaubap.login.presentation
 
 /**
  * Authentication result : success (user details) or error message.

@@ -7,6 +7,7 @@
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_data">User or password invalid</string>
     <string name="login_failed">"Login failed"</string>
     <string name="forget_password">Forget password?</string>
     <string name="dont_have_account">Don\'t have account?</string>

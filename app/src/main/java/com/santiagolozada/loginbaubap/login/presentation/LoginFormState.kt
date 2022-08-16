@@ -1,4 +1,4 @@
-package com.santiagolozada.loginbaubap.login.ui
+package com.santiagolozada.loginbaubap.login.presentation
 
 /**
  * Data validation state of the login form.
