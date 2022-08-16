@@ -6,15 +6,12 @@ import androidx.core.util.PatternsCompat
 import com.santiagolozada.loginbaubap.R
 import com.santiagolozada.loginbaubap.common.coroutines.MainDispatcher
 import com.santiagolozada.loginbaubap.common.viewModel.ScopedViewModel
-import com.santiagolozada.loginbaubap.login.data.LoginRepository
-import com.santiagolozada.loginbaubap.login.data.Result
-import com.santiagolozada.loginbaubap.login.presentation.LoggedInUserView
+import com.santiagolozada.loginbaubap.login.domain.LoginUseCaseImpl
 import com.santiagolozada.loginbaubap.login.presentation.LoginFormState
 import com.santiagolozada.loginbaubap.login.presentation.LoginResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 const val MAX_NUMBER_PASSWORD = 5
@@ -22,8 +19,8 @@ const val DURATION_REQUEST = 3000L
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginRepository: LoginRepository,
     @MainDispatcher uiDispatcher: CoroutineDispatcher,
+    private val loginUseCase: LoginUseCaseImpl,
 ) : ScopedViewModel(uiDispatcher) {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
@@ -38,17 +35,10 @@ class LoginViewModel @Inject constructor(
     fun login(username: String, password: String) {
         launch {
             _loadingState.value = true
-            val result = loginRepository.login(username, password)
 
-            //Simulates the time in which the service responds
-            delay(DURATION_REQUEST)
+            val result = loginUseCase(username, password)
 
-            if (result is Result.Success) {
-                _loginResult.value =
-                    LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
-            } else {
-                _loginResult.value = LoginResult(error = R.string.login_failed)
-            }
+            _loginResult.value = result
             _loadingState.value = false
         }
     }

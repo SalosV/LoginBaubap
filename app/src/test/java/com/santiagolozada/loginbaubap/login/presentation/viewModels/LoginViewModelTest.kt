@@ -5,6 +5,7 @@ import com.santiagolozada.loginbaubap.MainCoroutineRule
 import com.santiagolozada.loginbaubap.R
 import com.santiagolozada.loginbaubap.getOrAwaitValue
 import com.santiagolozada.loginbaubap.login.data.LoginRepository
+import com.santiagolozada.loginbaubap.login.domain.LoginUseCaseImpl
 import com.santiagolozada.loginbaubap.login.presentation.LoginFormState
 import com.santiagolozada.loginbaubap.login.presentation.LoginResult
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +36,7 @@ class LoginViewModelTest {
 
     @Before
     fun setUp() {
-        loginViewModel = LoginViewModel(loginRepository, Dispatchers.Unconfined)
+        loginViewModel = LoginViewModel(Dispatchers.Unconfined, LoginUseCaseImpl(loginRepository))
     }
 
     @Test
