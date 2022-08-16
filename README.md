@@ -20,8 +20,6 @@ I approached this application with the following knowledge in mind:
 ## Demo
 
 ![myfile](https://drive.google.com/uc?export=view&id=1ePBBf-9WAJPz_hxNkyhWQ08hyQYSNV2z)
-![image](https://drive.google.com/uc?export=view&id=1ByYYxXwTKbYQBC6wH4xboNIhQ63c0GFG)
-![image](https://drive.google.com/uc?export=view&id=1WalrSZVRHabHPCgoh3txoaSsD0AXTcGH)
 
 ## Features
 
