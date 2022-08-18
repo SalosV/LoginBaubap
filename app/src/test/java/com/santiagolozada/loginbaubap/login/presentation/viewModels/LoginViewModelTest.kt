@@ -1,7 +1,6 @@
 package com.santiagolozada.loginbaubap.login.presentation.viewModels
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.santiagolozada.loginbaubap.MainCoroutineRule
 import com.santiagolozada.loginbaubap.R
 import com.santiagolozada.loginbaubap.getOrAwaitValue
 import com.santiagolozada.loginbaubap.login.data.LoginRepository
@@ -24,11 +23,6 @@ class LoginViewModelTest {
 
     @get:Rule
     val rule = InstantTaskExecutorRule()
-
-    // Set the main coroutines dispatcher for unit testing.
-    @ExperimentalCoroutinesApi
-    @get:Rule
-    var mainCoroutineRule = MainCoroutineRule()
 
     private val loginRepository = mock<LoginRepository>()
 
@@ -71,7 +65,6 @@ class LoginViewModelTest {
 
         assertEquals(loginFormState.passwordError, value.passwordError)
     }
-
 
     @Test
     fun `Login failed`() {
